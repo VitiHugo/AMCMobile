@@ -74,7 +74,6 @@ export const AuthProvider: React.FC = ({children}) => {
         setUser(user);
         setGroups(responseGroupsUser.data);
 
-
         api.defaults.headers['Authorization'] = `Bearer ${token}`;
 
         await AsyncStorage.setItem('@RNAuth:user', JSON.stringify(user));
@@ -84,6 +83,7 @@ export const AuthProvider: React.FC = ({children}) => {
     async function signOut() {
         AsyncStorage.clear().then(() => {
             setUser(null);
+            setGroups(null);
         });
     } 
     return (
